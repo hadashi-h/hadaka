@@ -3,8 +3,8 @@
 
 #define SS_PIN 10
 #define RST_PIN 9
-#define trigPin 8
-#define echoPin 7
+#define trigPin 7
+#define echoPin 6
 bool access = false;
 
 RFID rfid(SS_PIN, RST_PIN);
@@ -19,7 +19,7 @@ int cards[][5] = {
 
 
 //Pin connected to ST_CP of 74HC595
-int latchPin = 6;
+int latchPin = 8;
 //Pin connected to SH_CP of 74HC595
 int clockPin = 5;
 ////Pin connected to DS of 74HC595
@@ -62,10 +62,10 @@ bool WasReset = true;
 
 void loop()
 {
-    CheckRfid();
+   // CheckRfid();
 
     int odleglosc = zmierzOdleglosc();
-
+    Serial.println(odleglosc);
     int prawidlowaOdleglosc;
 
     leds = 0;
