@@ -1,12 +1,8 @@
-$full-menu-width: 200px;
-$minimized-menu-width: 50px;
+$full-menu-width: 0px;
+$minimized-menu-width: 160px;
 
 #menu:hover {
-  width: $full-menu-width;
-  li span{
-    width: auto;
-    display: block;
-  }
+  margin-left: $full-menu-width;
 }
 
 #menu {
@@ -14,9 +10,10 @@ $minimized-menu-width: 50px;
   z-index: 999;
   font-size: 16px;
   position: fixed;
-  background-color: $nav-background; 
+  width: 220px;
+  background-color: $nav-background;
   box-sizing: border-box;
-  width: $minimized-menu-width;
+  margin-left: -$minimized-menu-width;
   @include transition(all 0.5s ease);
 
   a {
@@ -26,10 +23,7 @@ $minimized-menu-width: 50px;
   li {
     padding: 10px;
     box-sizing: border-box;
-    span{
-      width: 0;
-      display: none;
-    }
+
     &:hover {
       background-color: lighten($black, 5%);
     }
@@ -42,5 +36,6 @@ $minimized-menu-width: 50px;
   svg {
     font-size: 25px;
     margin: 0 10px 0 0;
+    float:right;
   }
 }
