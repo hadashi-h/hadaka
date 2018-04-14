@@ -1,0 +1,9 @@
+.box{
+	padding: 25px;
+	margin: 50px auto;
+  background: $box-background;
+	@include material-shadow($z-depth: 3);
+	@include grid-media($custom-neat-grid){
+    @include grid-column(6);
+  }
+}

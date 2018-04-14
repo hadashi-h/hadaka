@@ -1,0 +1,16 @@
+.btn{
+  @include transition(all 0.5s ease);
+}
+
+.btn-flat{
+  background: $btn-flat-background;
+  border: 1px solid $btn-flat-border;
+  color: $btn-flat-font;
+  @extend .btn;
+
+
+  &:hover, &:active, &:focus{
+    color: $btn-flat-font-hover;
+    background: $btn-flat-background-hover;
+  }
+}
