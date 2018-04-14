@@ -3,7 +3,7 @@
     $CONFIG = require_once './config.php';
     $HOST = $_SERVER['HTTP_HOST'];
 
-    Flight::route('GET /', function(){ 
+    Flight::route('GET /', function(){
 
         Flight::render('nav.php', array(), 'nav');
         Flight::render('footer.php', array(), 'footer');
@@ -17,6 +17,13 @@
 
     Flight::route('GET /index.php', function(){
         Flight::redirect('/');
+    });
+
+    Flight::route('GET /@fileName', function($fileName){
+        Flight::render('nav.php', array(), 'nav');
+        Flight::render('footer.php', array(), 'footer');
+        Flight::render('sites/'.$fileName.'.php', array(), 'content');
+        Flight::render('skeleton.php', array());
     });
 
     Flight::map('notFound', function(){
