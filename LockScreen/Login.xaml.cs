@@ -27,7 +27,7 @@ namespace LockScreen
             {
                 Dispatcher.Invoke(() => {
 
-                    var Login = new Login();
+                    var Login = new LoggedIn();
                     Login.Show();
                 });
             }
