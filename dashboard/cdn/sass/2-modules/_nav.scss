@@ -1,0 +1,46 @@
+$full-menu-width: 200px;
+$minimized-menu-width: 50px;
+
+#menu:hover {
+  width: $full-menu-width;
+  li span{
+    width: auto;
+    display: block;
+  }
+}
+
+#menu {
+  height: 100vh;
+  z-index: 999;
+  font-size: 16px;
+  position: fixed;
+  background-color: $nav-background; 
+  box-sizing: border-box;
+  width: $minimized-menu-width;
+  @include transition(all 0.5s ease);
+
+  a {
+    color: $white;
+  }
+
+  li {
+    padding: 10px;
+    box-sizing: border-box;
+    span{
+      width: 0;
+      display: none;
+    }
+    &:hover {
+      background-color: lighten($black, 5%);
+    }
+  }
+
+  ul {
+    margin-top: 10px;
+  }
+
+  svg {
+    font-size: 25px;
+    margin: 0 10px 0 0;
+  }
+}
