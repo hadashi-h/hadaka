@@ -8,17 +8,17 @@
         WindowStyle="None"
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="#ffFF4E50" Offset="0"/> 
-                <GradientStop Color="#ffF9D423" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <StackPanel VerticalAlignment="Center">
-            <Border BorderThickness="2" BorderBrush="#aafefefe" CornerRadius="20" Width="300" Height="300">
-                <Image Source="Resources/locked.png" Width="200" VerticalAlignment="Center" />
-            </Border>
-        </StackPanel>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries> 
+                <ResourceDictionary Source="Styles/Window.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Style="{StaticResource WindowBackground}">
+        <Border BorderThickness="2" BorderBrush="#aafefefe" CornerRadius="20" Width="300" Height="300" VerticalAlignment="Center">
+            <Image Source="Resources/locked.png" Width="200" VerticalAlignment="Center" />
+        </Border>
     </Grid>
 </Window>

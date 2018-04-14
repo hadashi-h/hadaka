@@ -8,23 +8,16 @@
         WindowStyle="None"
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen">
- 
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="#ffFF4E50" Offset="0"/>
-                <GradientStop Color="#ffF9D423" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Grid.Resources>
-            <Style TargetType="TextBlock">
-                <Setter Property="Foreground" Value="#fefefe"/>
-                <Setter Property="FontSize" Value="25"/>
-                <Setter Property="FontWeight" Value="Light"/>
-                <Setter Property="TextAlignment" Value="Center"/>
-            </Style>
-        </Grid.Resources>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Window.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Style="{StaticResource WindowBackground}"> 
+        <StackPanel>
             <Image Source="Resources/hubert.png" Width="200"/>
             <TextBlock Text="Hello, Hubert!" FontSize="55" Margin="0,20,0,0"/>
             <TextBlock Text="Please enter your password to login"/>

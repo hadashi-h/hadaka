@@ -1,0 +1,41 @@
+﻿<Window x:Class="LockScreen.LoggedIn"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d"
+        Title="Log In to BioFuture"
+        WindowStyle="None"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Buttons.xaml"/>
+                <ResourceDictionary Source="Styles/Window.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Style="{StaticResource WindowBackground}">
+        <Image Source="Resources/hubert.png" Width="100" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50"/>
+
+        <StackPanel>
+            <Border Style="{StaticResource PseudoBtnFlat}" Height="300">
+                <StackPanel>
+                    <Image Source="Resources/dashboard.png" Width="200" VerticalAlignment="Center" />
+                    <TextBlock Text="Enter the dashboard"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="15" ShadowDepth="6" Direction="270" Color="#AA000000" Opacity=".22" RenderingBias="Performance" xmlns:Freeze="True"/>
+                </Border.Effect>
+                <Grid>
+                    <Border Style="{StaticResource PseudoBtnCto}">
+                        <TextBlock Text="Pay the bills" FontSize="22"/>
+                    </Border>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>
