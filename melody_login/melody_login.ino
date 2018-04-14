@@ -8,8 +8,19 @@ int clockPin = 12;
 ////Pin connected to DS of 74HC595
 int dataPin = 11;
 
+int speakerPin = 3;
+
 byte leds = 0;
 int currentLED = 0;
+
+int buffor[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+String bufforSound[] = { "", "", "", "", "", "", "", "", "" };
+String march[] = { "a", "cH", "f", "a", "cH", "f", "a", "a", "a" };
+
+
+#define a 440
+#define f 349
+#define cH 523
 
 void setup()
 {
@@ -22,14 +33,31 @@ void setup()
 	pinMode(latchPin, OUTPUT);
 	pinMode(clockPin, OUTPUT);
 	pinMode(dataPin, OUTPUT);
+	pinMode(speakerPin, OUTPUT);
+
+	
+	
 
 }	
-
+bool WasReset = true;
 
 void loop()
 {
+	/*
+	beep(speakerPin, a, 500);
+	beep(speakerPin, a, 500);
+	beep(speakerPin, a, 500);
+	beep(speakerPin, f, 350);
+	beep(speakerPin, cH, 150);
+
+	beep(speakerPin, a, 500);
+	beep(speakerPin, f, 350);
+	beep(speakerPin, cH, 150);
+	beep(speakerPin, a, 1000);
+	*/
+
 	int odleglosc = zmierzOdleglosc();
-	Serial.println(odleglosc);
+	//Serial.println(odleglosc);
 	//Serial.println(" cm");
 
 	int prawidlowaOdleglosc;
@@ -54,7 +82,7 @@ void loop()
 	
 	if (odleglosc < 62)
 	{
-	
+		//Serial.println(odleglosc);
 
 			if (odleglosc < 8)
 			{
@@ -117,21 +145,63 @@ void loop()
 				bitSet(leds, 7);
 			}
 			
-			/*
+			
 			if (odleglosc <= 20)
 			{
-				Serial.println("cH");
+				tone(speakerPin, cH);
+				//Serial.println("cH");
 			}
-			else if (20 < odleglosc <= 40)
+			else if ( odleglosc<=40)
 			{
-				Serial.println("f");
+				tone(speakerPin, f);
+				//Serial.println("f");
 			}
-			else if (odleglosc > 40)
+			else 
 			{
-				Serial.println("a");
+				tone(speakerPin, a);
+				//Serial.println("a");
 			}
-		*/
+
+
+			digitalWrite(latchPin, LOW);
+			shiftOut(dataPin, clockPin, LSBFIRST, leds);
+			digitalWrite(latchPin, HIGH);
+
+			if (WasReset)
+			{
+				WasReset = false;
+				for (int i = 8; i >= 1; i--)
+				{
+					buffor[i] = buffor[i - 1];
+				}
+				buffor[0] = odleglosc;
+
+
+				for (int i = 0; i <= 8; i++)
+				{
+					///Serial.print(buffor[i]);
+					//Serial.print(" ");
+				}
+				//Serial.println();
+			}
+
+			BufforToSoundBuffor(buffor, bufforSound);
+
+			for (int i = 0; i <= 8; i++)
+			{
+				Serial.print(bufforSound[i]);
+				Serial.print(" ");
+			}
+			Serial.println();
+
+			ValidateMarch(bufforSound, march);
+		
 	}
+else
+{
+	WasReset = true;
+	tone(speakerPin, 0);
+}
 
 	
 
@@ -141,16 +211,55 @@ void loop()
 
 		//bitSet(leds, currentLED);
 		//bitSet(leds, currentLED + 1);
-
-		digitalWrite(latchPin, LOW);
-		shiftOut(dataPin, clockPin, LSBFIRST, leds);
-		digitalWrite(latchPin, HIGH);
 	
+
+		
 	/*
 	TIME LED
 	*/
 	delay(50);
 }
+
+void BufforToSoundBuffor(int buffor[], String bufforOfSound[])
+{
+	for (int i = 0; i<=8; i++)
+	{
+		if (buffor[i]<20)
+		{ 
+			
+			bufforOfSound[i]= "cH";
+		}
+		else if (buffor[i] >= 20 && buffor[i]<40)
+		{
+			
+			bufforOfSound[i]="f";
+		}
+		else if(buffor[i]<60)
+		{
+			
+			bufforOfSound[i] = "a";
+		}
+	}
+}
+
+void ValidateMarch(String bufforOfSound[], String march[])
+{
+	bool isValid = true;
+
+	for (int i = 0; i <= 8; i++)
+	{
+		if (bufforOfSound[i] != march[i])
+		{
+			isValid = false;
+		}
+	}
+
+	if (isValid == true)
+	{
+		Serial.println("Login");
+	}
+}
+
 
 
 int zmierzOdleglosc() {
@@ -166,4 +275,26 @@ int zmierzOdleglosc() {
   dystans = czas / 58;
  
   return dystans;
+}
+void beep(unsigned char speakerPin, int frequencyInHertz, long timeInMilliseconds)
+{
+	//digitalWrite(ledPin, HIGH);
+	//use led to visualize the notes being played
+
+	int x;
+	long delayAmount = (long)(1000000 / frequencyInHertz);
+	long loopTime = (long)((timeInMilliseconds * 1000) / (delayAmount * 2));
+	for (x = 0;x<loopTime;x++)
+	{
+		digitalWrite(speakerPin, HIGH);
+		delayMicroseconds(delayAmount);
+		digitalWrite(speakerPin, LOW);
+		delayMicroseconds(delayAmount);
+	}
+
+	//digitalWrite(ledPin, LOW);
+	//set led back to low
+
+	delay(20);
+	//a little delay to make all notes sound separate
 }
