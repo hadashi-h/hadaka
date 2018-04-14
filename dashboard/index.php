@@ -4,7 +4,6 @@
     $HOST = $_SERVER['HTTP_HOST'];
 
     Flight::route('GET /', function(){
-
         Flight::render('nav.php', array(), 'nav');
         Flight::render('footer.php', array(), 'footer');
         Flight::render('index.php', array(), 'content');

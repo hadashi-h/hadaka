@@ -3,6 +3,7 @@
     <div class="box user-box">
       <h1>Hello Hubert!</h1>
       <img src="<?php echo $imgUrl ?>/hubert.png"/>
+      <h3>Everything is fine, although I would keep an eye on your phone! </h3>
     </div>
 
     <div class="box activity-box">
@@ -65,8 +66,7 @@
     </div>
 
     <div class="box phone-box">
-      <h1>MyPhone</h1>
-
+      <h1>MyPhone Lenovo P780</h1>
       <table cellspacing="0" cellpadding="0">
         <tr>
           <th>Last activity</th><th>Date/Time</th><th></th>

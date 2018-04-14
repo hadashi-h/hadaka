@@ -8,7 +8,7 @@ html{
 
 .container{
   margin-left: 30px;
-} 
+}
 
 .macros-box{
   padding-bottom: 63px;
@@ -17,13 +17,32 @@ html{
 .user-box{
   background: transparent;
   color: $white;
-  font-size: 39px;
   font-weight: 300;
   box-shadow: none;
+
+  h1{
+    font-size: 39px;
+  }
+
+  h3{
+    margin: 25px 0;
+    font-weight: 400;
+  }
 
   img{
     margin: 0;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     border-radius: 50%;
+  }
+}
+
+.phone-box{
+  h1{ color: $red;}
+}
+
+.big-box{
+  #activity-chart{
+    max-width: 600px;
+    margin: 0 auto;
   }
 }
