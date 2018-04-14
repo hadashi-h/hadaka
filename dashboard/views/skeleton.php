@@ -24,10 +24,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="<?php echo $imgUrl ?>fav/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $imgUrl ?>fav/favicon-16x16.png">
     <!-- /Favicon -->
-
-        <?php require_once('font.html');?>
-
-
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link href="<?php echo $cdnUrl ?>stylesheets/style.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo $cdnUrl ?>stylesheets/swiper.min.css" media="screen, projection, print" rel="stylesheet" type="text/css">
         <link href="<?php echo $cdnUrl ?>stylesheets/aos.css" media="screen, projection, print" rel="stylesheet" type="text/css">
@@ -42,12 +39,11 @@
 
 
   <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-  <script src="<?php echo $cdnUrl ?>js/jquery-3.2.1.min.js"></script> 
+  <script src="<?php echo $cdnUrl ?>js/jquery-3.2.1.min.js"></script>
   <script src="<?php echo $cdnUrl ?>js/swiper.min.js"></script>
   <script src="<?php echo $cdnUrl ?>js/jquery.easing.min.js"></script>
   <script src="<?php echo $cdnUrl ?>js/aos.js"></script>
   <script src="<?php echo $cdnUrl ?>js/Chart.bundle.min.js"></script>
-  <script src="<?php echo $cdnUrl ?>js/dashboard.js"></script>
 
   <script>
   AOS.init();
@@ -65,20 +61,9 @@
  });
 
 
-    var savingChart = new Chart($("#savings-chart"), {
-       type: 'doughnut',
-       data: {
-       labels: ["Assets", "Expenses"],
-       datasets: [{
-           label: '# of Votes',
-           data: [80, 20],
-           backgroundColor: [
-               '#ffb42e',
-               '#ff3403'
-           ]
-       }]
-   }
-   });
+    var savingChart = new Chart($("#savings-chart"), {"type":"bar","data":{"labels":["June","July", "August", "September", "October"],
+    "datasets":[{"label":"Account Balance","data":[65,59,80,81,56,55,40],
+     "backgroundColor":["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)","rgb(54, 162, 235)","rgb(153, 102, 255)","rgb(201, 203, 207)"]}]} });
 
    var activityChart = new Chart($("#activity-chart"), {
       type: 'doughnut',
@@ -86,16 +71,28 @@
       labels: ["Walk", "Run", "Inactive"],
       datasets: [{
           label: '# of Votes',
-          data: [4, 3, 6, 11],
+          data: [40, 23, 150],
           backgroundColor: [
-              '#ffb42e',
-              '#ff3403',
-              '#e3dde1',
-              'rgba(227, 221, 225, 0.2)'
+              "rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)"
           ]
       }]
   }
   });
+
+  var macrosChart = new Chart($("#macros-chart"), {
+     type: 'doughnut',
+     data: {
+     labels: ["Protein", "Fat", "Carbohydrates"],
+     datasets: [{
+         label: '# of Votes',
+         data: [26, 40, 34],
+         backgroundColor: [
+           "rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)"
+         ]
+     }]
+ }
+ });
+
 });
 
 </script>
