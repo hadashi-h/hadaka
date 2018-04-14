@@ -30,6 +30,7 @@ using System.Windows;
             if (data.Contains("Hubert"))
             {
                 serialPort.DataReceived -= SerialPort_DataReceived;
+                serialPort.Close();
                 Dispatcher.Invoke(() => {
 
                     var Login = new Login();

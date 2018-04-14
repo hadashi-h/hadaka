@@ -62,11 +62,9 @@ bool WasReset = true;
 
 void loop()
 {
-   // CheckRfid();
+    CheckRfid();
 
     int odleglosc = zmierzOdleglosc();
-    Serial.println(odleglosc);
-    int prawidlowaOdleglosc;
 
     leds = 0;
 
