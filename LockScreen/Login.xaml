@@ -1,20 +1,18 @@
-﻿<Window x:Class="LockScreen.MainWindow"
+﻿<Window x:Class="LockScreen.Login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LockScreen"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         mc:Ignorable="d"
         Title="Log In to BioFuture"
         WindowStyle="None"
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen">
-  
-  
+ 
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="#ffFF4E50" Offset="0"/> 
+                <GradientStop Color="#ffFF4E50" Offset="0"/>
                 <GradientStop Color="#ffF9D423" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
@@ -27,9 +25,9 @@
             </Style>
         </Grid.Resources>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-          <Image Source="Resources/hubert.png" Width="200"/>
+            <Image Source="Resources/hubert.png" Width="200"/>
             <TextBlock Text="Hello, Hubert!" FontSize="55" Margin="0,20,0,0"/>
-            <TextBlock Text="Please enter your password to login"/> 
+            <TextBlock Text="Please enter your password to login"/>
         </StackPanel>
     </Grid>
 </Window>
