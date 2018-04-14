@@ -80,7 +80,7 @@ void loop()
 
 	//Serial.println(currentLED);
 	
-	if (odleglosc < 62)
+	if (odleglosc < 40)
 	{
 		//Serial.println(odleglosc);
 
@@ -146,12 +146,12 @@ void loop()
 			}
 			
 			
-			if (odleglosc <= 20)
+			if (odleglosc <= 10)
 			{
 				tone(speakerPin, cH);
 				//Serial.println("cH");
 			}
-			else if ( odleglosc<=40)
+			else if ( odleglosc<=25)
 			{
 				tone(speakerPin, f);
 				//Serial.println("f");
@@ -200,7 +200,7 @@ void loop()
 else
 {
 	WasReset = true;
-	tone(speakerPin, 0);
+	noTone(speakerPin);
 }
 
 	
@@ -224,17 +224,17 @@ void BufforToSoundBuffor(int buffor[], String bufforOfSound[])
 {
 	for (int i = 0; i<=8; i++)
 	{
-		if (buffor[i]<20)
+		if (buffor[i]<10)
 		{ 
 			
 			bufforOfSound[i]= "cH";
 		}
-		else if (buffor[i] >= 20 && buffor[i]<40)
+		else if (buffor[i]<25)
 		{
 			
 			bufforOfSound[i]="f";
 		}
-		else if(buffor[i]<60)
+		else if(buffor[i]<40)
 		{
 			
 			bufforOfSound[i] = "a";
